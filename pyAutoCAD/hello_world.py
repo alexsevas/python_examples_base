@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# conda activate all2py30
+# pyautocad 0.2.0
+
 from pyautocad import Autocad, APoint
 
 
