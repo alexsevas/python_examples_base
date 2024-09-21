@@ -1,8 +1,10 @@
 # Developed by MikyPo
 # More code for DA here: https://dzen.ru/mikypo
-
+#
+# conda activate extras (в PyCharm запускает процесс на GPU !!!)
 # conda activate all2py310 (в PyCharm запускает процесс на CPU)
 # ENV all2py310, extras
+#
 # pip install git+https://github.com/openai/whisper.git --quiet
 # pip install ffmpeg --quiet
 
