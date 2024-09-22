@@ -98,7 +98,28 @@ def gpu_winreg():
     return value if value else False
 
 
-
+# HDD, SSD
+def hdd_ssd_winreg():
+    hdd_ssd_info = dict()
+    loc = "HARDWARE\\DEVICEMAP\\Scsi"
+    with OpenKeyEx(HKEY_LOCAL_MACHINE, loc) as h_apps:
+        for idx in range(QueryInfoKey(h_apps)[0]):
+            try:
+                scsi_port = OpenKeyEx(h_apps, EnumKey(h_apps, idx))
+                for ids in range(QueryInfoKey(scsi_port)[0]):
+                    scsi_bus = OpenKeyEx(scsi_port, EnumKey(scsi_port, ids))
+                    for idb in range(QueryInfoKey(scsi_bus)[0]):
+                        target = OpenKeyEx(scsi_bus, EnumKey(scsi_bus, idb))
+                        for idc in range(QueryInfoKey(target)[0]):
+                            log_unit = OpenKeyEx(target, EnumKey(target, idc))
+                            hdd_ssd_info.update({QueryValueEx(log_unit, 'SerialNumber')[0].strip(): {
+                                    "Vendor": QueryValueEx(log_unit, 'Identifier')[0].strip().split()[0].strip(),
+                                    "Model": QueryValueEx(log_unit, 'Identifier')[0].strip().split()[1].strip(),
+                                    "SerialNumber": QueryValueEx(log_unit, 'SerialNumber')[0].strip()
+                                }})
+            except FileNotFoundError:
+                continue
+    return hdd_ssd_info if hdd_ssd_info else False
 
 
 
@@ -162,7 +183,8 @@ def main():
         print_wmic("Информация о процессоре\n", cpu_info)
     if gpu_info := gpu_winreg():
         print_wmic("Информация о видеокарте\n", gpu_info)
-
+    if drive_info := hdd_ssd_winreg():
+        print_wmic("Информация о HDD и SSD\n", drive_info)
 
 
     document.add_paragraph(wmic_info)
