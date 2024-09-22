@@ -70,6 +70,29 @@ def motherboard_winreg() -> (dict, bool):
     return False
 
 
+# CPU
+def cpu_winreg():
+    proc_info = dict()
+    loc = "HARDWARE\\DESCRIPTION\\System\\CentralProcessor"
+    with OpenKeyEx(HKEY_LOCAL_MACHINE, loc) as h_apps:
+        if QueryInfoKey(h_apps)[0]:
+            proc_info.update({"CoreCount": QueryInfoKey(h_apps)[0]})
+            try:
+                core = OpenKeyEx(h_apps, EnumKey(h_apps, 0))
+                proc_info.update({
+                    "ProcessorNameString": QueryValueEx(core, 'ProcessorNameString')[0].strip(),
+                    "Identifier": QueryValueEx(core, 'Identifier')[0].strip(),
+                    "VendorIdentifier": QueryValueEx(core, 'VendorIdentifier')[0].strip(),
+                    "~MHz": QueryValueEx(core, '~MHz')[0]
+                })
+            except FileNotFoundError:
+                return False
+    return proc_info if proc_info else False
+
+
+
+
+
 
 wmic_info = ""
 
@@ -126,7 +149,8 @@ def main():
         print_wmic("Информация о BIOS\n", bios_info)
     if mb_info := motherboard_winreg():
         print_wmic("Информация о материнской плате\n", mb_info)
-
+    if cpu_info := cpu_winreg():
+        print_wmic("Информация о процессоре\n", cpu_info)
 
 
 
