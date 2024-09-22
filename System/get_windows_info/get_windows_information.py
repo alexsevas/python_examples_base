@@ -12,6 +12,7 @@ from docx import Document
 
 from windows_tools import product_key
 
+
 # Узнаем версию ОС
 def winreg_os() -> dict:
     win_info = dict()
@@ -41,6 +42,34 @@ def winreg_os() -> dict:
     else:
         win_info.update({"ActivateKey": "No Key"})
     return win_info if win_info else False
+
+
+# BIOS
+def bios_winreg() -> dict:
+    md_dict = dict()
+    if sbv := OpenKeyEx(HKEY_LOCAL_MACHINE, r"HARDWARE\DESCRIPTION\System"):
+        md_dict.update({"SystemBiosVersion": QueryValueEx(sbv, "SystemBiosVersion")[0][0]})
+    for key in ["BIOSVendor", "BIOSVersion", "BIOSReleaseDate"]:
+        if bios := OpenKeyEx(HKEY_LOCAL_MACHINE, r"HARDWARE\DESCRIPTION\System\BIOS"):
+            try:
+                md_dict.update({key: QueryValueEx(bios, key)[0]})
+            except FileNotFoundError:
+                continue
+        else:
+            return False
+    return md_dict if md_dict else False
+
+
+# Материнская плата
+def motherboard_winreg() -> (dict, bool):
+    md_dict = dict()
+    if mb_info := OpenKeyEx(HKEY_LOCAL_MACHINE, r"SYSTEM\CurrentControlSet\Control\SystemInformation"):
+        md_dict.update({'SystemManufacturer': QueryValueEx(mb_info, 'SystemManufacturer')[0]})
+        md_dict.update({'SystemProductName': QueryValueEx(mb_info, 'SystemProductName')[0]})
+        return md_dict if md_dict else False
+    return False
+
+
 
 wmic_info = ""
 
@@ -93,6 +122,14 @@ def main():
 
     if os_info := winreg_os():
         print_wmic("Информация об операционной системе\n", os_info)
+    if bios_info := bios_winreg():
+        print_wmic("Информация о BIOS\n", bios_info)
+    if mb_info := motherboard_winreg():
+        print_wmic("Информация о материнской плате\n", mb_info)
+
+
+
+
 
     document.add_paragraph(wmic_info)
     document.save(f'{node()}.docx')
