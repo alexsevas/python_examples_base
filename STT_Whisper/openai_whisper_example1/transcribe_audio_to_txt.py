@@ -25,7 +25,8 @@ else:
 options = whisper.DecodingOptions(language=language)
 
 # Загружаем аудио файл
-audio = whisper.load_audio('1.wav')
+audio = whisper.load_audio('JFFIT_002.wav')
+#audio = whisper.load_audio('audio.mp3')
 audio = whisper.pad_or_trim(audio)
 
 # Выполняем распознавание
@@ -33,3 +34,7 @@ result = model.transcribe(audio)
 
 # Выводим результат
 print(result['text'])
+
+# Запись результата в файл text.txt
+with open ('text.txt', 'w') as file:
+    file.write(result['text'])
