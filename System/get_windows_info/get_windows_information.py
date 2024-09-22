@@ -122,6 +122,60 @@ def hdd_ssd_winreg():
     return hdd_ssd_info if hdd_ssd_info else False
 
 
+# Network Interface
+def nic_winreg():
+    nic = dict()
+    loc = r'SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkCards'
+    desc = []
+    if adapt_name := OpenKeyEx(HKEY_LOCAL_MACHINE, loc):
+        for idx in range(QueryInfoKey(adapt_name)[0]):
+            adapter = OpenKeyEx(adapt_name, EnumKey(adapt_name, idx))
+            nic[QueryValueEx(adapter, 'ServiceName')[0]] = dict()
+            nic[QueryValueEx(adapter, 'ServiceName')[0]].update({
+                "Description": QueryValueEx(adapter, 'Description')[0]
+            })
+            desc.append(QueryValueEx(adapter, 'Description')[0])
+            loc_adapt = r'SYSTEM\ControlSet001\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}'
+            cfg = []
+            if adapt := OpenKeyEx(HKEY_LOCAL_MACHINE, loc_adapt):
+                for idc in range(QueryInfoKey(adapt)[0]):
+                    try:
+                        adpt = OpenKeyEx(adapt, EnumKey(adapt, idc))
+                        if QueryValueEx(adpt, 'DriverDesc')[0] in desc:
+                            nic[QueryValueEx(adpt, 'NetCfgInstanceId')[0]].update({
+                                "Description": QueryValueEx(adpt, 'DriverDesc')[0]
+                            })
+                            cfg.append(QueryValueEx(adpt, 'NetCfgInstanceId')[0])
+                    except (FileNotFoundError, PermissionError):
+                        continue
+            inter = r'SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces'
+            if inter_cfg := OpenKeyEx(HKEY_LOCAL_MACHINE, inter):
+                for idb in range(QueryInfoKey(inter_cfg)[0]):
+                    if EnumKey(inter_cfg, idb).upper() in cfg:
+                        nic[EnumKey(inter_cfg, idb).upper()].update({
+                            "NetCfgInstanceId": EnumKey(inter_cfg, idb).upper()})
+                        intr = OpenKeyEx(inter_cfg, EnumKey(inter_cfg, idb))
+                        try:
+                            nic[EnumKey(inter_cfg, idb).upper()].update({
+                                "DhcpDefaultGateway": QueryValueEx(intr, 'DhcpDefaultGateway')[0]})
+                        except FileNotFoundError:
+                            pass
+                        try:
+                            nic[EnumKey(inter_cfg, idb).upper()].update({
+                                "DhcpIPAddress": QueryValueEx(intr, 'DhcpIPAddress')[0]})
+                        except FileNotFoundError:
+                            pass
+                        try:
+                            nic[EnumKey(inter_cfg, idb).upper()].update({
+                                "DhcpIPAddress": QueryValueEx(intr, 'DhcpIPAddress')[0]})
+                        except FileNotFoundError:
+                            pass
+                        netw = r'SYSTEM\ControlSet001\Control\Network\{4D36E972-E325-11CE-BFC1-08002BE10318}' + '\\' + \
+                               EnumKey(inter_cfg, idb).upper() + '\\' + 'Connection'
+                        if netw_cfg := OpenKeyEx(HKEY_LOCAL_MACHINE, netw):
+                            nic[EnumKey(inter_cfg, idb).upper()].update({
+                                "Name": QueryValueEx(netw_cfg, 'Name')[0]})
+    return nic if nic else False
 
 
 wmic_info = ""
@@ -167,6 +221,7 @@ def print_wmic(part, dict_info):
     print(part)
     wmic_info += f'{part}\n'
 
+
 def main():
     global wmic_info
     t = time.monotonic()
@@ -185,7 +240,8 @@ def main():
         print_wmic("Информация о видеокарте\n", gpu_info)
     if drive_info := hdd_ssd_winreg():
         print_wmic("Информация о HDD и SSD\n", drive_info)
-
+    if nic_info := nic_winreg():
+        print_wmic("Информация о физических сетевых интерфейсах\n", nic_info)
 
     document.add_paragraph(wmic_info)
     document.save(f'{node()}.docx')
