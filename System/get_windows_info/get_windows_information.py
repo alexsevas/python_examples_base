@@ -90,6 +90,15 @@ def cpu_winreg():
     return proc_info if proc_info else False
 
 
+# GPU
+def gpu_winreg():
+    loc = r'SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000'
+    key = OpenKeyEx(HKEY_LOCAL_MACHINE, loc, 0, KEY_READ)
+    value = {"Name": QueryValueEx(key, "DriverDesc")[0]}
+    return value if value else False
+
+
+
 
 
 
@@ -151,7 +160,8 @@ def main():
         print_wmic("Информация о материнской плате\n", mb_info)
     if cpu_info := cpu_winreg():
         print_wmic("Информация о процессоре\n", cpu_info)
-
+    if gpu_info := gpu_winreg():
+        print_wmic("Информация о видеокарте\n", gpu_info)
 
 
 
