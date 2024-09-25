@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
+# conda activate allpy310
+
 from pyautocad import Autocad, APoint
 
 
