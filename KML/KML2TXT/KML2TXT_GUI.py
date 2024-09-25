@@ -1,3 +1,6 @@
+#
+# conda activate allpy310
+
 import os
 from bs4 import BeautifulSoup
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton, QTextBrowser
