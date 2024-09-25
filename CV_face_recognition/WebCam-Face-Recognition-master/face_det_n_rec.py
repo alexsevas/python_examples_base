@@ -1,3 +1,5 @@
+# conda activate FR
+
 # Import libraries
 import face_recognition
 import numpy as np
