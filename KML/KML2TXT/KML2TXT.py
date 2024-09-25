@@ -24,7 +24,7 @@ def main():
     selected_file = kml_files[file_num - 1]
     print(f"Обрабатываем файл: {selected_file}")
 
-    with open(selected_file, 'r') as f:
+    with open(selected_file, 'r', encoding='utf-8') as f:
         s = BeautifulSoup(f, 'xml')
 
         filename = os.path.splitext(selected_file)[0]+".txt"
