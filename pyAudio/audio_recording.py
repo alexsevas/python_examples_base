@@ -1,9 +1,12 @@
+#
+# conda activate allpy310
+
 import pyaudio
 import wave
 
 # Параметры аудиозаписи
 FORMAT = pyaudio.paInt16
-CHANNELS = 1 # количество каналовЖ 1- моно, 2 - стерео
+CHANNELS = 1 # количество каналов: 1- моно, 2 - стерео
 RATE = 44100 # частота дискредитации
 CHUNK = 1024
 RECORD_SECONDS = 5  # Продолжительность записи в секундах
