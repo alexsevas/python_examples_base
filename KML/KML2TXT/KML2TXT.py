@@ -35,6 +35,11 @@ def main():
                 print(str)
                 str += "\n"
                 file.write(str)
+            for coords in s.find_all('gx:coord'):
+                str = coords.string
+                print(str)
+                str += "\n"
+                file.write(str)
 
 if __name__ == "__main__":
     main()

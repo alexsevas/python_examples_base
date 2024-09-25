@@ -1,7 +1,7 @@
 import os
 from bs4 import BeautifulSoup
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton, QTextBrowser
-from PyQt5.QtCore import Qt
+
 import sys
 
 class KMLConverter(QWidget):
@@ -47,6 +47,11 @@ class KMLConverter(QWidget):
 
                     with open(filename, 'w') as file:
                         for coords in s.find_all('coordinates'):
+                            str = coords.string
+                            print(str)
+                            str += "\n"
+                            file.write(str)
+                        for coords in s.find_all('gx:coord'):
                             str = coords.string
                             print(str)
                             str += "\n"
