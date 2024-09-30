@@ -7,6 +7,9 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import csv
+import time
+import random
+
 
 # парсим страницу и сохраняем ее в index.html
 
@@ -130,4 +133,4 @@ for category_name, category_href in all_categories.items():
         print("Работа завершена!")
         break
     print(f"Осталось итераций: {iteration_count}")
-    sleep(random.randrange(2, 4))
+    time.sleep(random.randint(2, 4))  # Pause for a random time between 2 and 4 seconds
