@@ -12,9 +12,9 @@ import os
 import whisper
 
 # Установим путь к модели в переменную окружения
-os.environ['WHISPER_CACHE_DIR'] = 'C:/AI/Whisper'
+os.environ['WHISPER_CACHE_DIR'] = 'C:/PROJECTS/_Weights_/Whisper'
 language = 'ru'
-model_path = 'C:/AI/Whisper/large-v3.pt'
+model_path = 'C:/PROJECTS/_Weights_/Whisper/large-v3.pt'
 
 # Загружаем модель
 if os.path.exists(model_path):
