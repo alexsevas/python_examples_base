@@ -1,7 +1,8 @@
-# V4
-# ENV py310torch231gpu
+# conda activate py310torch231gpu
 # ENV py39torch231gpu, py310torch231gpu, py311torch231gpu
 # а для запуска silerotts_portable нужен кратковременно инет, для загрузки yml
+
+# V4
 
 import os
 import torch
@@ -18,9 +19,9 @@ if not os.path.isfile(local_file):
 model = torch.package.PackageImporter(local_file).load_pickle("tts_models", "model")
 model.to(device)
 
-example_text = 'В недрах тундры выдры в г+етрах т+ырят в вёдра ядра кедров. Раз, два, три, четыри, пять - вышел зайчик погулять!'
+example_text = 'В недрах тундры выдры в г+етрах т+ырят в вёдра +ядра к+едров. Раз, два, три, четыри, пять - вышел зайчик погулять!'
 sample_rate = 48000
-speaker='eugene' # aidar, baya, kseniya, xenia, eugene, random
+speaker = 'eugene' # aidar, baya, kseniya, xenia, eugene, random
 
 audio_paths = model.save_wav(text=example_text,
                              speaker=speaker,
