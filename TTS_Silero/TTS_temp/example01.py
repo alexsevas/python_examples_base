@@ -1,8 +1,9 @@
-#переписано под PyPDF2 3.0 версию - есть изменения в методах и их названиях
-#печатаем в консоли текст из PDF-документа
+# переписано под PyPDF2 3.0 версию - есть изменения в методах и их названиях
+# 1)печатаем в консоли текст из PDF-документа и сохраняем в text.txt
+# 2)читаем текст из text.txt и преобразуем его в audio.mp3
 
-#import pyttsx3 #conda activate xtts, all2py310
-
+import pyttsx3 #conda activate xtts, all2py310
+'''
 import PyPDF2 #conda activate allpy39, allpy310
 
 pdfreader = PyPDF2.PdfReader(open('C:\\PROJECTS\\_DATA_\\doc.pdf', 'rb'))
@@ -24,5 +25,5 @@ speaker = pyttsx3.init()
 speaker.save_to_file(clean_text, 'audio_doc.mp3')
 speaker.runAndWait()
 
-#speaker.stop()
-'''
+speaker.stop()
+#'''
