@@ -5,16 +5,16 @@ import shutil
 
 # input dirs
 input_folders = [
-    'flower_photos/daisy',
-    'flower_photos/dandelion',
-    'flower_photos/roses',
-    'flower_photos/sunflowers',
-    'flower_photos/tulips'
+    '_Datasets_/flower_photos/daisy/',
+    '_Datasets_/flower_photos/dandelion/',
+    '_Datasets_/flower_photos/roses/',
+    '_Datasets_/flower_photos/sunflowers/',
+    '_Datasets_/flower_photos/tulips/'
 ]
 
 # base out dir
-BASE_DIR_ABSOLUTE = "C:\\PROJECTS\\alexsevas_projects\\python_examples_base\\CV_Yolo8\\"
-OUT_DIR = './datasets/flowers_prepared/'
+BASE_DIR_ABSOLUTE = "C:\\PROJECTS\\"
+OUT_DIR = './_Datasets_/flowers_prepared/'
 
 # out dirs
 OUT_TRAIN = OUT_DIR + 'train/'
