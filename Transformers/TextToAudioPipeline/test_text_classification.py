@@ -1,7 +1,9 @@
+# conda activate allpy310
+
 from transformers import pipeline
 
 pipe = pipeline("text-classification")
-result = pipe("This restaurant is awesome")
+result = pipe("Good day!")
 
 print(result)
 
