@@ -27,6 +27,7 @@ def ask_gpt_free(feedbacks: list):
                 model=model,
                 messages=[{"role": "user", "content": content}],
             )
+            print (f'summarization with model - ' + model)
             return response.choices[0].message.content
         except Exception as err:
             print(err)
