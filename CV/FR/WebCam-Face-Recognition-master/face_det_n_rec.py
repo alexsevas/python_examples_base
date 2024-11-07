@@ -7,7 +7,6 @@ import descriptors
 import cv2
 import os
 
-import dlib
 #print ("dlib.DLIB_USE_CUDA = ", dlib.DLIB_USE_CUDA)
 
 print("[INFO] loading a set of descriptors...")
