@@ -4,6 +4,7 @@
 from faster_whisper import WhisperModel
 
 #model_size = "large-v3"
+#model_size = "medium"
 model_size = "base"
 
 # GPU не работает нигде
