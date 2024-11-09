@@ -1,6 +1,8 @@
 # pip install -r requirements.txt
 # pip install -U g4f[all]
 
+# conda activate allpy311
+
 import json
 import os
 
