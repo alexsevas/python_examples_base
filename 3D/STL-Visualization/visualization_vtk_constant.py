@@ -1,3 +1,5 @@
+# conda activate 3dpy310
+
 import vtk
 
 def main():
