@@ -1,5 +1,5 @@
-
 # conda activate allpy310
+# Использует прописанный в PATH ffmpeg - делает раскадровку видео в PNG (fps=1 - 1 PNG на 1 сек видео
 
 import os
 import subprocess
