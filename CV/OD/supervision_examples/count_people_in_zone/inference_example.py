@@ -1,14 +1,13 @@
-# python script.py --source_video_path people-walking.mp4 --source_weights_path C:\PROJECTS\_Weights_\Yolo8\Yolo8Detection\yolov8x.pt
-# python ultralytics_example.py --source_weights_path C:\PROJECTS\_Weights_\Yolo8\Yolo8Detection\yolov8x.pt --zone_configuration_path C:\PROJECTS\alexsevas_projects\python_examples_base\CV_object_detection\supervision_examples\count_people_in_zone\data\multi-zone-config.json --source_video_path market-square.mp4 --target_video_path output_video.mp4
-
 import argparse
 import json
+import os
 from typing import List, Tuple
 
 import cv2
 import numpy as np
+from inference.core.models.roboflow import RoboflowInferenceModel
+from inference.models.utils import get_roboflow_model
 from tqdm import tqdm
-from ultralytics import YOLO
 
 import supervision as sv
 
@@ -66,28 +65,29 @@ def initiate_annotators(
 
 
 def detect(
-    frame: np.ndarray, model: YOLO, confidence_threshold: float = 0.5
+    frame: np.ndarray, model: RoboflowInferenceModel, confidence_threshold: float = 0.5
 ) -> sv.Detections:
     """
-    Detect objects in a frame using a YOLO model, filtering detections by class ID and
-        confidence threshold.
+    Detect objects in a frame using Inference model, filtering detections by class ID
+        and confidence threshold.
 
     Args:
         frame (np.ndarray): The frame to process, expected to be a NumPy array.
-        model (YOLO): The YOLO model used for processing the frame.
+        model (RoboflowInferenceModel): The Inference model used for processing the
+            frame.
         confidence_threshold (float): The confidence threshold for filtering
             detections. Default is 0.5.
 
     Returns:
-        sv.Detections: Filtered detections after processing the frame with the YOLO
+        sv.Detections: Filtered detections after processing the frame with the Inference
             model.
 
     Note:
-        This function is specifically tailored for a YOLO model and assumes class ID 0
-            for filtering.
+        This function is specifically tailored for an Inference model and assumes class
+        ID 0 for filtering.
     """
-    results = model(frame, imgsz=1280, verbose=False)[0]
-    detections = sv.Detections.from_ultralytics(results)
+    results = model.infer(frame)[0]
+    detections = sv.Detections.from_inference(results)
     filter_by_class = detections.class_id == 0
     filter_by_confidence = detections.confidence > confidence_threshold
     return detections[filter_by_class & filter_by_confidence]
@@ -129,7 +129,7 @@ def annotate(
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="Counting people in zones with YOLO and Supervision"
+        description="Counting people in zones with Inference and Supervision"
     )
 
     parser.add_argument(
@@ -139,9 +139,15 @@ if __name__ == "__main__":
         type=str,
     )
     parser.add_argument(
-        "--source_weights_path",
-        default="yolov8x.pt",
-        help="Path to the source weights file",
+        "--model_id",
+        default="yolov8x-1280",
+        help="Roboflow model ID",
+        type=str,
+    )
+    parser.add_argument(
+        "--roboflow_api_key",
+        default=None,
+        help="Roboflow API KEY",
         type=str,
     )
     parser.add_argument(
@@ -171,13 +177,22 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
+    api_key = args.roboflow_api_key
+    api_key = os.environ.get("ROBOFLOW_API_KEY", api_key)
+    if api_key is None:
+        raise ValueError(
+            "Roboflow API key is missing. Please provide it as an argument or set the "
+            "ROBOFLOW_API_KEY environment variable."
+        )
+    args.roboflow_api_key = api_key
+
     video_info = sv.VideoInfo.from_video_path(args.source_video_path)
     polygons = load_zones_config(args.zone_configuration_path)
     zones, zone_annotators, box_annotators = initiate_annotators(
         polygons=polygons, resolution_wh=video_info.resolution_wh
     )
 
-    model = YOLO(args.source_weights_path)
+    model = get_roboflow_model(model_id=args.model_id, api_key=args.roboflow_api_key)
 
     frames_generator = sv.get_video_frames_generator(args.source_video_path)
     if args.target_video_path is not None:
