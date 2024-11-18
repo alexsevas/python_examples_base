@@ -1,3 +1,5 @@
+# pip install tkintermapview
+
 import customtkinter
 from tkintermapview import TkinterMapView
 
