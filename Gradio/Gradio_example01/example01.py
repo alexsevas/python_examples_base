@@ -3,6 +3,8 @@
 
 # pip install gradio
 
+# при включенном VPN(выдает ошибку с ответом сервера и не работает (но ссылку в консоли выдает)
+
 '''import gradio as gra
 def user_greeting(name):
     return "Hi! " + name + " Welcome to Gradio!"
