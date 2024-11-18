@@ -1,3 +1,5 @@
+# conda activate allpy310
+
 from os.path import exists
 from PyQt6.QtWidgets import *
 from PyQt6.QtSql import *
