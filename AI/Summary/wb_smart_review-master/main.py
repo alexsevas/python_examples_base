@@ -2,6 +2,7 @@
 # pip install -U g4f[all]
 
 # conda activate allpy311
+# не работает при включенном ControlD (comss DNS)
 
 import json
 import os
