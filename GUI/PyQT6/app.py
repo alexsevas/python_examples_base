@@ -1,3 +1,5 @@
+# conda activate allpy310
+
 from PyQt6 import QtWidgets
 
 import sys
