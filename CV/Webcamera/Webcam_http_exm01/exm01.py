@@ -4,11 +4,10 @@ import requests
 # URL видеопотока с веб-камеры
 # Замените URL на актуальный:
 # тут варианты - https://g33ktricks.blogspot.com/p/the-rtsp-real-time-streaming-protocol.html
-video_url = "http://77.222.181.11:8080/mjpg/video.mjpg"
+# video_url = "http://77.222.181.11:8080/mjpg/video.mjpg"
+video_url = "http://67.53.46.161:65123/mjpg/video.mjpg"
 
 # Проверяем доступ
-
-
 # Проверяем доступность URL перед началом работы
 try:
     response = requests.head(video_url, timeout=5)
