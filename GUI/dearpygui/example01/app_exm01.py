@@ -1,3 +1,5 @@
+# conda activate allpy310
+#
 import dearpygui.dearpygui as dpg
 
 # Меню с выпадающим списком.
