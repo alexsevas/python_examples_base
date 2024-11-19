@@ -1,3 +1,6 @@
+# conda ctivate allpy310
+# py2exe: pyinstaller --onefile extract_wifi_psw.py
+
 import subprocess
 
 def extract_wifi_password():
@@ -21,7 +24,7 @@ def extract_wifi_password():
 
         # print(f'Profile: {profile}\nPassword: {password}\n{"#" * 20}') # Результат скрипта в консоль
         with open(file='wifi_passwords.txt', mode='a', encoding='utf-8') as file:
-            file.write(f'Profile: {profile}\nPassword: {password}\n{"#" * 20}')
+            file.write(f'Profile: {profile}\nPassword: {password}\n{"#" * 20}\n')
 
 def main():
     extract_wifi_password()
