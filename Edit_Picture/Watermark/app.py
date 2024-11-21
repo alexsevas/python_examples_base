@@ -1,4 +1,5 @@
 # conda activate allpy310
+# Add watermark to pictures in folder with PIL
 
 import os
 from PIL import Image
