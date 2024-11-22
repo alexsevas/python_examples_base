@@ -1,6 +1,8 @@
 # pip install yt-dlp
-
 # conda activate allpy310
+# Без VPN - ошибка, разрыв соединения,
+# с VPN - ловит CAPTCHA,
+# c DiscordFix - работает, но иногда не может выдернуть аудиодорожку при "bestaudio"
 
 import yt_dlp
 
