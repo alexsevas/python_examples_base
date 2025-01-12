@@ -1,3 +1,5 @@
+# env allpy311
+
 import asyncio
 from googletrans import Translator
 
