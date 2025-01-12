@@ -1,3 +1,5 @@
+# env allpy311
+
 # pip install googletrans
 
 # RuntimeWarning: coroutine 'Translator.translate' was never awaited
