@@ -7,6 +7,8 @@ import os
 tokenizer = AutoTokenizer.from_pretrained("facebook/bart-large")
 model = AutoModelForSeq2SeqLM.from_pretrained("facebook/bart-large")
 '''
+# C:\Users\A43X\.cache\huggingface\hub\models--t-bank-ai--T-lite-instruct-0.1 - веса 14.9Гб
+# на CUDA не идет (ENV py39torch231gpu), на CPU долго - хавает 32 Гб ОЗУ + файл подкачки на ССД, всего 48Гб
 
 torch.manual_seed(42)
 
