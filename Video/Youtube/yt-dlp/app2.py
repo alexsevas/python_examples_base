@@ -1,4 +1,5 @@
 # GPT
+# Работает с zapret
 # ENV allpy311
 
 # pip install yt-dlp
