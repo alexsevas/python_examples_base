@@ -2,7 +2,9 @@
 # conda activate allpy310
 import time
 import easyocr
+import torch
 
+print (torch.cuda.get_device_name(0))
 t = time.monotonic()
 
 # reader = easyocr.Reader(['ch_sim','en']) # this needs to run only once to load the model into memory
