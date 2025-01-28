@@ -1,3 +1,6 @@
+# ENV NEW ytpy310 !!!
+# python -m pip install -U "yt-dlp[default]"
+
 # pip install yt-dlp
 # conda activate allpy310
 # Без VPN - ошибка, разрыв соединения,
@@ -6,7 +9,7 @@
 
 import yt_dlp
 
-url = "https://www.youtube.com/watch?v=k_k7P9Tcm3A"
+url = "https://www.youtube.com/shorts/i-GNaWb9TjY"
 
 ydlp_opts = {
     'format': 'bestvideo+bestaudio/best',
