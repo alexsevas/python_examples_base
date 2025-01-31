@@ -1,3 +1,6 @@
+# Преобразование римских цифр в виде арабских
+# Запуск: python app.py MXXII
+
 import sys
 
 romanStr = sys.argv[1]
