@@ -73,7 +73,8 @@ the `HF_HUB_DISABLE_SYMLINKS_WARNING` environment variable. For more details, se
 To support symlinks on Windows, you either need to activate Developer Mode or to run Python as an administrator. 
 In order to activate developer mode, see this article: https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development
 warnings.warn(message)
-
+Hardware accelerator e.g. GPU is available in the environment, but no `device` argument is passed to the `Pipeline` object. 
+Model will be on CPU.
 '''
 
 from transformers import pipeline
