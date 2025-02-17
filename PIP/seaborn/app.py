@@ -29,3 +29,8 @@ plt.show()
 sns.histplot(data=data, x='price', kde=True)
 plt.title('Price Distribution')
 plt.show()
+
+# Box Plot Для категорий
+sns.boxplot(x='type', y='price', data=data)
+plt.title('Price Distribution by Property Type')
+plt.show()
