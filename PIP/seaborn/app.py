@@ -24,3 +24,8 @@ sns.scatterplot(x='area', y='price', hue='type', data=data)
 plt.title('Price vs Area with Property Types')
 plt.show()
 
+
+# Пример плотности и гистограммы
+sns.histplot(data=data, x='price', kde=True)
+plt.title('Price Distribution')
+plt.show()
