@@ -5,6 +5,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 
+# Вы можете настроить стиль ваших графиков под конкретные задачи
+# style must be one of white, dark, whitegrid, darkgrid, ticks
+sns.set_theme(style='darkgrid')  # Установка темы
+
 # Пример данных
 data = pd.DataFrame({
     'price': [200000, 150000, 300000, 350000, 500000],
