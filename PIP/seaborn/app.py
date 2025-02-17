@@ -15,3 +15,12 @@ data = pd.DataFrame({
 sns.scatterplot(x='area', y='price', data=data)
 plt.title('Price vs Area')
 plt.show()
+
+
+# с помощью hue можно добавить третий фактор, например, категориальный
+data['type'] = ['apartment', 'apartment', 'house', 'house', 'villa']
+
+sns.scatterplot(x='area', y='price', hue='type', data=data)
+plt.title('Price vs Area with Property Types')
+plt.show()
+
