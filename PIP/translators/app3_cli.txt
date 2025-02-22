@@ -1,0 +1,16 @@
+# https://github.com/UlionTse/translators
+
+>fanyi --help                                                                                                                                                                                                                               ─╯
+usage: fanyi input [--help] [--translator] [--from] [--to] [--version]
+
+Translators(fanyi for CLI) is a library that aims to bring free, multiple, enjoyable translations to individuals and students in Python.
+
+positional arguments:
+  input                 raw text or path to a file to be translated.
+
+options:
+  --help                show help information.
+  --translator          e.g. bing, google, yandex, etc...
+  --from                from_language, default `auto` detected.
+  --to                  to_language, default `en`.
+  --version             Show version information.
