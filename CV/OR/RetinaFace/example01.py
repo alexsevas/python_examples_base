@@ -1,4 +1,5 @@
-# conda activate 3dpy39
+# conda activate retinafacep39
+# OLD conda activate 3dpy39
 
 # первый запуск:
 # 24-11-12 21:41:57 - retinaface.h5 will be downloaded from the url
