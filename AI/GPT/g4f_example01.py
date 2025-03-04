@@ -1,4 +1,6 @@
-# conda activate allpy311, extras2
+# conda activate allpy310_2, allpy310, extras2
+
+# conda activate allpy311, extras2 OLD
 # pip install -U g4f
 
 #from openai import OpenAI
@@ -11,7 +13,7 @@ def ask_gpt_free():
               "она запускалась полностью автономно, чтобы все веса уже были заранее скачаны в папке самой портативной сборки" \
               " и чтобы для ее работы не требовалось подключение к интернету. Напиши пошаговую подробную инструкцию с подробным" \
               " описание всех шагов, возможных проблемах при создании такой сборки и их решении. Спасибо."'''
-    content = f"Кто ты?"
+    content = f"Кто ты? Чем ты можешь мне помочь?"
     model_list = ["gpt-4o", "gpt-4o-mini", "gpt-3.5-turbo"]
     for model in model_list:
         try:
