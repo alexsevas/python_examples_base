@@ -1,5 +1,8 @@
+# Делает раскадровку видео в PNG (fps=1 - 1 PNG на 1 сек видео)
+# Выбор файла - через меню диалога.
+# Использует прописанный в PATH ffmpeg
+
 # conda activate allpy310
-# Использует прописанный в PATH ffmpeg - делает раскадровку видео в PNG (fps=1 - 1 PNG на 1 сек видео
 
 import os
 import subprocess
@@ -11,7 +14,7 @@ def main():
     root.withdraw()
 
     # Select the video file using filedialog
-    video_file_path = filedialog.askopenfilename(title="Select Video File", parent=root)
+    video_file_path = filedialog.askopenfilename(title="Select Edit_Video File", parent=root)
 
     if not video_file_path:
         messagebox.showerror("Error", "No video file selected")
