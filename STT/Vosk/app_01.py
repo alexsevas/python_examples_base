@@ -1,4 +1,4 @@
-#TODO загрузить recasepunc.zip - 2ГБ веса для проверки пунктуации
+# загрузить recasepunc.zip - 2ГБ веса для проверки пунктуации
 
 # conda activate allpy310
 
