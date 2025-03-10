@@ -1,5 +1,7 @@
 # pip install requests typer
-# conda activate all2py310
+# conda activate allpy310
+
+# Использование: python check_crypto_price_CLI.py check-price bitcoin --currency rub
 
 import requests
 import typer
