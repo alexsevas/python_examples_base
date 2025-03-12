@@ -21,8 +21,11 @@ model.to(device)
 
 example_text = 'В недрах тундры выдры в г+етрах т+ырят в вёдра +ядра к+едров. Раз, два, три, четыри, пять - вышел зайчик погулять!'
 sample_rate = 48000
-speaker = 'eugene' # aidar, baya, kseniya, xenia, eugene, random
+speaker = 'kseniya' # aidar, baya, kseniya, xenia, eugene, random
 
 audio_paths = model.save_wav(text=example_text,
                              speaker=speaker,
                              sample_rate=sample_rate)
+
+# Воспроизводим файл
+os.system("start test.wav")  # Для Windows
