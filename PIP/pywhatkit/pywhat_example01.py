@@ -2,8 +2,18 @@
 
 import pywhatkit
 
-# Send a WhatsApp Message to a Contact at 1:30 PM
-pywhatkit.sendwhatmsg("+776543210", "Test message. WTF", 17, 35)
+# Отправить WhatsApp сообщение контакту +77654321000 в 17:35
+# Отправка осуществляется открытием web-версии whatsapp в браузере по умолчанию и отправки сообщения там
+pywhatkit.sendwhatmsg("+77654321000", "Test message. WTF", 17, 35)
+# В папке со скриптом создает файл PyWhatKit_DB.txt, где хранит задания по отправке
+
+'''
+Date: 14/3/2025
+Time: 17:34
+Phone Number: +7765432100
+Message: Test message. WTF
+--------------------
+'''
 
 # Same as above but Closes the Tab in 2 Seconds after Sending the Message
 #pywhatkit.sendwhatmsg("+910123456789", "Hi", 13, 30, 15, True, 2)
