@@ -1,7 +1,9 @@
 # conda activate allpy310
 
-# pip install python-docx
+# pip install python-docx lxml openpyxl PyPDF2
 
+# Преобразование DOCX в TXT
+# Для работы с DOCX файлами используем библиотеку python-docx.
 
 from docx import Document
 
