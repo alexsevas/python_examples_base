@@ -2,6 +2,8 @@
 
 # pip install mistralai aiogram
 
+# Бот-модератор (под капотом Mistral AI через офф. API))
+
 import asyncio
 import logging
 import random
