@@ -1,3 +1,5 @@
+# conda activate allpy310
+
 # Частотный анализ текстов
 
 from collections import Counter
@@ -35,3 +37,21 @@ if __name__ == "__main__":
         top_n = input("Сколько самых частых слов вывести? (По умолчанию: 10): ").strip()
         top_n = int(top_n) if top_n.isdigit() else 10
         display_top_words(word_count, top_n)
+
+'''
+Программа: Анализатор частоты слов
+Введите путь к текстовому файлу: D:\TXT_base\python_examples_base.txt
+Сколько самых частых слов вывести? (По умолчанию: 10): 50
+
+Топ 10 самых частых слов:
+с: 181
+и: 165
+для: 157
+import: 152
+в: 151
+2: 101
+1: 93
+in: 81
+for: 77
+на: 73
+'''
