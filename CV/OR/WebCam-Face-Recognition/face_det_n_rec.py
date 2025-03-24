@@ -1,13 +1,18 @@
-# conda activate FR
+# conda activate deepfacepy310
+# conda activate FR (OLD)
 
-# Import libraries
+# Используя дескрипторы лиц из папки faces (созданные при помощи descriptors.py) подписывает обнаруженные лица
+# на изображении с вебкамеры в реалтайме
+
 import face_recognition
 import numpy as np
 import descriptors
 import cv2
 import os
+import dlib
 
-#print ("dlib.DLIB_USE_CUDA = ", dlib.DLIB_USE_CUDA)
+print ("dlib.DLIB_USE_CUDA = ", dlib.DLIB_USE_CUDA)
+#dlib.DLIB_USE_CUDA = True
 
 print("[INFO] loading a set of descriptors...")
 descriptors.getfaces('photos')
@@ -82,7 +87,7 @@ while True:
         cv2.putText(frame, name, (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 1)
 
     # Display the resulting image
-    cv2.imshow('Video', frame)
+    cv2.imshow('Edit_Video', frame)
 
     # Hit 'q' on the keyboard to quit!
     if cv2.waitKey(1) & 0xFF == ord('q'):
