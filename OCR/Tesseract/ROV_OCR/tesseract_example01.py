@@ -1,4 +1,5 @@
-#### Пример кода
+# conda activate OCRpy310
+
 # pip install pytesseract
 
 from PIL import Image
