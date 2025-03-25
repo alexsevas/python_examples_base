@@ -4,7 +4,7 @@
 
 from pydub import AudioSegment
 
-# Загрузка MP3-файла
+# Загрузка OGG-файла
 audio = AudioSegment.from_file("data/voice_bass.ogg")
 # Загрузка второго трека
 background = AudioSegment.from_file("data/gde_more_sunday.mp3")
