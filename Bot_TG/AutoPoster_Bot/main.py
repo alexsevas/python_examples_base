@@ -1,3 +1,5 @@
+# conda activate allpy310
+
 import requests
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
