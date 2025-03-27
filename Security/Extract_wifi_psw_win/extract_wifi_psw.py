@@ -1,4 +1,4 @@
-# conda ctivate allpy310
+# conda activate allpy310
 # py2exe: pyinstaller --onefile extract_wifi_psw.py
 
 import subprocess
