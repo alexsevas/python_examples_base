@@ -1,6 +1,7 @@
-# # conda activate allpy310
+# conda activate allpy310
 
-#  Данные о токена с платформы DexScreener
+# Данные о токенах с платформы DexScreener
+
 import requests
 import json
 
