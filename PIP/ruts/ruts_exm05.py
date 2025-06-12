@@ -9,13 +9,14 @@
 Описание статистик взяты из корпуса OpenCorpora (http://opencorpora.org/dict.php?act=gram).
 '''
 
+import pprint
 from ruts import MorphStats
 text = "Постарайтесь получить то, что любите, иначе придется полюбить то, что получили"
 ms = MorphStats(text)
-print(ms.pos)
+pprint.pprint(ms.pos)
 
-print(ms.get_stats())
+pprint.pprint(ms.get_stats())
 
-print(ms.explain_text(filter_none=True))
+pprint.pprint(ms.explain_text(filter_none=True))
 
-print(ms.print_stats('pos', 'tense'))
+pprint.pprint(ms.print_stats('pos', 'tense'))
