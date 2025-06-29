@@ -1,9 +1,26 @@
-# conda create -n 3dpy39 tensorflow numpy==1.23.4 python=3.9 -y
-# conda activate 3dpy39
-# pip install retina-face
+# conda activate py39test, 3dpy310
+
+# conda create -n ENV tensorflow numpy==1.23.4 python=3.9 -y
 # pip install laspy
 # pip install open3d
 
+import numpy as np
+import laspy
+import open3d as o3d
+
+las = laspy.read('D:\\AI_DATA\\3D_Point_clouds_python_DATA\\2021_heerlen_table.las')
+list(las.point_format.dimension_names)
+set(list(las.classification))
+
+point_data = np.stack([las.X, las.Y, las.Z], axis=0).transpose((1, 0))
+
+geom = o3d.geometry.PointCloud()
+geom.points = o3d.utility.Vector3dVector(point_data)
+
+o3d.visualization.draw_geometries([geom])
+
+
+'''
 # [Open3D INFO]   -- Mouse view control --
 # [Open3D INFO]     Left button + drag         : Rotate.
 # [Open3D INFO]     Ctrl + left button + drag  : Translate.
@@ -59,18 +76,4 @@
 # [Open3D INFO]                    3 - WINTER color map.
 # [Open3D INFO]                    4 - HOT color map.
 # [Open3D INFO]
-
-import numpy as np
-import laspy
-import open3d as o3d
-
-las = laspy.read('2020_Drone_M.las')
-list(las.point_format.dimension_names)
-set(list(las.classification))
-
-point_data = np.stack([las.X, las.Y, las.Z], axis=0).transpose((1, 0))
-
-geom = o3d.geometry.PointCloud()
-geom.points = o3d.utility.Vector3dVector(point_data)
-
-o3d.visualization.draw_geometries([geom])
+'''
