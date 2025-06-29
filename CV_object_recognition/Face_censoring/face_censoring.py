@@ -1,4 +1,6 @@
+# conda activate py310test
 
+# Автоматическое распознавание и размытие лиц на изображении (face censoring)
 
 import cv2
 
