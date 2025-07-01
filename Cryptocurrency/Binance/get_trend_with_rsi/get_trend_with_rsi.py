@@ -8,7 +8,6 @@ import numpy as np
 def get_trend_with_rsi(symbol):
     """
     Determines the trend for the given token using SMA and RSI.
-
     :param symbol: Token symbol (e.g., "BTCUSDT").
     :return: A string with the trend ("uptrend", "downtrend", "sideways", "undefined").
     """
@@ -85,3 +84,10 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+'''
+Результат:
+
+Для пары BTCUSDT текущий тренд - uptrend (oversold)
+
+'''
