@@ -49,5 +49,26 @@ def fetch_token_data():
     except Exception as e:
         print(f"Error fetching data: {e}")
 
-if __name__ == "__main__":
+
+def main():
     fetch_token_data()
+
+if __name__ == "__main__":
+    main()
+
+'''
+Результат:
+
+URL: https://dexscreener.com/base/0x253902da3f9b67b693e27f46ad2717c2e7647f3d
+Chain ID: base
+Token Address: 0x253902da3f9b67b693e27f46ad2717c2e7647f3d
+Header: https://dd.dexscreener.com/ds-data/tokens/base/0x253902da3f9b67b693e27f46ad2717c2e7647f3d/header.png
+Icon: https://dd.dexscreener.com/ds-data/tokens/base/0x253902da3f9b67b693e27f46ad2717c2e7647f3d.png
+Description: Félicette was a stray Parisian cat that became the first feline launched into space on 18 October 1963 as part of the French space program.
+Links:
+Link: https://ape.store/base/0x253902da3f9b67b693e27f46ad2717c2e7647f3d
+twitter: https://x.com/BasedFelicette
+telegram: https://t.me/FelicetteSpaceCat1
+----------------------------------------
+и т.д.
+'''
