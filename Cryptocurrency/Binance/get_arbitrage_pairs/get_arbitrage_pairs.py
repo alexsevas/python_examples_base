@@ -43,10 +43,18 @@ def get_arbitrage_pairs():
         print(f"Ошибка: {e}")
         return []
 
+
+def main():
+    print (f'Result - {get_arbitrage_pairs()}')
+
+
 # Запуск
 if __name__ == "__main__":
-    get_arbitrage_pairs()
+    main()
 
 '''
-Ошибка: 451 Client Error: Unavailable For Legal Reasons for url: https://api.binance.com/api/v3/exchangeInfo
+Результат: 
+[['BTCUSDT', 'BTCEUR', 'EURUSDT'], ['ETHUSDT', 'ETHBTC', 'BTCUSDT'], ['ETHUSDT', 'ETHEUR', 'EURUSDT'] и т.д. 
+
+Дома: "ошибка: 451 Client Error: Unavailable For Legal Reasons for url: https://api.binance.com/api/v3/exchangeInfo"
 '''
